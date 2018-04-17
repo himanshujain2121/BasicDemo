@@ -1,3 +1,22 @@
 <p>
   posts works!
 </p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>UserId</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of postList">
+      <td>{{emp.id}}</td>
+      <td>{{emp.userId}}</td>
+      <td>{{emp.title}}</td>
+      <td>{{emp.body}}</td> 
+    </tr>
+  </tbody>
+</table>
+
