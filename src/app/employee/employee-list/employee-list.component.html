@@ -1,0 +1,22 @@
+<p>
+  employee-list works!
+</p>
+<p>*ngFor directive</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeList">
+      <td>{{emp.id}}</td>
+      <td>{{emp.name}}</td>
+      <td>{{emp.salary}}</td>
+      <td>{{emp.email}}</td> 
+    </tr>
+  </tbody>
+</table>
