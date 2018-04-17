@@ -9,6 +9,7 @@
       <th>Name</th>
       <th>Salary</th>
       <th>Email</th>
+      <th>Select</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,9 @@
       <td>{{emp.name}}</td>
       <td>{{emp.salary}}</td>
       <td>{{emp.email}}</td> 
+      <td>
+        <button type="button" class="btn btn-primary" (click)="selectEmployee(emp)">Select Employee</button>
+      </td>
     </tr>
   </tbody>
 </table>

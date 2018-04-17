@@ -6,6 +6,8 @@
   <div *ngIf="visible" [innerText]="title"> </div>
   <button class="btn btn-primary" type="button" (click)="toggle()">Toggle</button>
   {{visible}}
+<p>{{afterSelectedEmployee |json}}</p>
+  
 
 <p>*ngSwitch case</p>
 <div [ngSwitch]="role">
@@ -22,5 +24,7 @@
 </div>
 <hr>
 <hr>
-<app-employee-list [employeeList]="employee"></app-employee-list>
+<!-- () = this is used for event  (childSelectedEmployee) -->
+<!-- [] = this is used for binding  [employeeList] -->
+<app-employee-list [employeeList]="employee" (childSelectedEmployee)="receiveFromParent($event)"></app-employee-list>
 </div>
