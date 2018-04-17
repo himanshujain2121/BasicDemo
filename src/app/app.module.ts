@@ -10,6 +10,7 @@ import { BooksComponent } from './books/books.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
 // service
 import { EmployeeService } from './service/employee/employee.service';
+import { BooksService } from './service/books/books.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { EmployeeService } from './service/employee/employee.service';
   imports: [
     BrowserModule
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService,BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

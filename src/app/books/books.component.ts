@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewChildren,QueryList } from '@angular/core';
-import { Book } from './books-list/book';
+import { Book } from '../service/books/book';
 import { BooksListComponent } from './books-list/books-list.component';
+import { BooksService } from '../service/books/books.service';
 
 @Component({
   selector: 'app-books',
@@ -9,22 +10,17 @@ import { BooksListComponent } from './books-list/books-list.component';
 })
 export class BooksComponent implements OnInit {
 
-  books: Book[] = [
-    { id: 1, name: 'java', author: 'james', version: '1.2', price: 105 },
-    { id: 4, name: 'Angular', author: 'kaushik', version: '3.2', price: 408 },
-    { id: 6, name: 'javascript', author: 'belon', version: '3.7', price: 203 },
-    { id: 2, name: 'html', author: 'mark', version: '6.7', price: 500 },
-    { id: 3, name: 'spring', author: 'joule', version: '1.4', price: 110 }
-  ];
+  books: Book[] = [];
 
   @ViewChild(BooksListComponent)
   booklistcomponent:BooksListComponent;
   @ViewChildren(BooksListComponent)
   bookListChildernView:QueryList<BooksListComponent>;
 
-  constructor() { }
+  constructor(private booksService:BooksService) { }
 
   ngOnInit() {
+    this.books = this.booksService.getBookList();
   }
 loadBooks(){
   this.booklistcomponent.booklist = this.books;
