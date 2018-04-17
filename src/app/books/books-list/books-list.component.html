@@ -1,0 +1,24 @@
+<p>
+  books-list  here
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Version</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of booklist">
+      <td>{{book.id}}</td>
+      <td>{{book.name}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.version}}</td> 
+      <td>{{book.price}}</td>
+    </tr>
+  </tbody>
+</table>
+
