@@ -11,6 +11,7 @@ import { BooksListComponent } from './books/books-list/books-list.component';
 // service
 import { EmployeeService } from './service/employee/employee.service';
 import { BooksService } from './service/books/books.service';
+import { NewemployeeService } from './service/employee/newemployee.service';
 
 
 @NgModule({
@@ -25,7 +26,10 @@ import { BooksService } from './service/books/books.service';
   imports: [
     BrowserModule
   ],
-  providers: [EmployeeService,BooksService],
+  providers: [
+   // {provide:EmployeeService,useClass:EmployeeService},
+    {provide:EmployeeService,useClass:EmployeeService}
+    ,BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
