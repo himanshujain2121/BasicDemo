@@ -2,8 +2,40 @@
   <h1 >
     {{title}}
   </h1>
-  <div [hidden]="visible" [innerText]="title"> </div>
-  <button type="button" (click)="toggle()">Toggle</button>
+  <p>*ngIf directive</p>
+  <div *ngIf="visible" [innerText]="title"> </div>
+  <button class="btn btn-primary" type="button" (click)="toggle()">Toggle</button>
   {{visible}}
 </div>
+<p>*ngFor directive</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employee">
+      <td>{{emp.id}}</td>
+      <td>{{emp.name}}</td>
+      <td>{{emp.salary}}</td>
+      <td>{{emp.email}}</td> 
+    </tr>
+  </tbody>
+</table>
+<p>*ngSwitch case</p>
+<div [ngSwitch]="role">
+  <div *ngSwitchCase = "'admin'">
+    This is Admin Section
+  </div>
+  <div *ngSwitchCase = "'user'">
+      This is User Section
+  </div>
+  <div *ngSwitchDefault>
+      This is Default Case
+  </div>
 
+</div>
