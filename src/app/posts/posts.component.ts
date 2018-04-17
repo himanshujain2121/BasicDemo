@@ -23,4 +23,15 @@ export class PostsComponent implements OnInit {
     );
   }
 
+  addPost(){
+     this.postservice.addPost().subscribe(
+       (res)=>{console.log(res)},
+       (err)=>console.log(err),
+     )
+  }
+  updatePost(){
+   this.postservice.updatePost().subscribe((res)=>console.log(res)
+   )
+  }
+
 }

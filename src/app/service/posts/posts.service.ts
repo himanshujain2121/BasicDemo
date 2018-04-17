@@ -5,10 +5,20 @@ import { Posts } from './posts';
 @Injectable()
 export class PostsService {
 
-  constructor(private httpclient:HttpClient) { }
+  constructor(private httpclient: HttpClient) { }
 
-  getposts(){
+  getposts() {
     return this.httpclient.get<Posts[]>('https://jsonplaceholder.typicode.com/posts');
+  }
+
+  addPost() {
+    let post = { userId: 1, title: 'qwertyuiop', body: 'asdfghjkl' };
+    return this.httpclient.post('https://jsonplaceholder.typicode.com/posts', post);
+  }
+
+  updatePost() {
+    let post = { userId: 1, id: 2, title: 'qwertyuiop', body: 'asdfghjkl' };
+    return this.httpclient.put('https://jsonplaceholder.typicode.com/posts/1',post);
   }
 
 } 
