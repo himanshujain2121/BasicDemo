@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren,QueryList } from '@angular/core';
 import { Book } from './books-list/book';
 import { BooksListComponent } from './books-list/books-list.component';
 
@@ -16,8 +16,11 @@ export class BooksComponent implements OnInit {
     { id: 2, name: 'html', author: 'mark', version: '6.7', price: 500 },
     { id: 3, name: 'spring', author: 'joule', version: '1.4', price: 110 }
   ];
+
   @ViewChild(BooksListComponent)
   booklistcomponent:BooksListComponent;
+  @ViewChildren(BooksListComponent)
+  bookListChildernView:QueryList<BooksListComponent>;
 
   constructor() { }
 
@@ -25,5 +28,8 @@ export class BooksComponent implements OnInit {
   }
 loadBooks(){
   this.booklistcomponent.booklist = this.books;
+  this.bookListChildernView.forEach((bookcomponent)=>{
+    bookcomponent.booklist = this.books;
+  })
 }
 }
