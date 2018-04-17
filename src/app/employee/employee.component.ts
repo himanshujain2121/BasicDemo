@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from './employee';
+import { EmployeeService } from '../service/employee/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -11,15 +12,11 @@ export class EmployeeComponent implements OnInit {
   visible: boolean = false;
   role:string = "user";
   afterSelectedEmployee:Employee;
-  employee: Employee[] = [
-    { id: 1, name: 'Himanshu', email: 'himanshu@gmail.com', salary: 60000 },
-    { id: 1, name: 'Namrata', email: 'namrata@gmail.com', salary: 20000 },
-    { id: 1, name: 'Nishu', email: 'nishu@gmail.com', salary: 12000 },
-    { id: 1, name: 'Ankush', email: 'ankush@gmail.com', salary: 37000 }
-  ];
-  constructor() { }
+  employee: Employee[] = [];
+  constructor(private employeeService:EmployeeService) { }
 
   ngOnInit() {
+    this.loadEmployee();
   }
   toggle() {
     this.visible = !this.visible;
@@ -27,5 +24,9 @@ export class EmployeeComponent implements OnInit {
 
   receiveFromParent(emp:Employee){
     this.afterSelectedEmployee = emp;
+  }
+
+  loadEmployee(){
+    this.employee  = this.employeeService.getEmployeeList();
   }
 }

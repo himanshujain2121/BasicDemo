@@ -8,6 +8,8 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { DepartmentComponent } from './department/department.component';
 import { BooksComponent } from './books/books.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
+// service
+import { EmployeeService } from './service/employee/employee.service';
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import { BooksListComponent } from './books/books-list/books-list.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
