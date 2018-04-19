@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup, FormControl, Validator } from '@angular/forms';
+import { FormBuilder,FormGroup, FormControl, Validator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
@@ -14,16 +14,16 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.orderForm = this.fb.group(
       {
-        orderId: new FormControl(''),
-        customerName: new FormControl(''),
-        email: new FormControl(''),
-        mobile: new FormControl(''),
+        orderId: new FormControl('',[Validators.required, Validators.min(1)]),
+        customerName: new FormControl('',[Validators.required,Validators.minLength(4)]),
+        email: new FormControl('',[Validators.required]),
+        mobile: new FormControl('',[Validators.required]),
         address:this.fb.group(
           {
-            address1: new FormControl(),
-            address2: new FormControl(),
-            city: new FormControl(),
-            pin: new FormControl(),
+            address1: new FormControl('',[Validators.required]),
+            address2: new FormControl('',[Validators.required]),
+            city: new FormControl('',[Validators.required]),
+            pin: new FormControl('',[Validators.required]),
           }
         )
       }
