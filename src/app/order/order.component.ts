@@ -30,4 +30,8 @@ export class OrderComponent implements OnInit {
     )
   }
 
+  saveOrder(){
+    console.log(this.orderForm.value);
+  }
+
 }
