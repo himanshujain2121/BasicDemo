@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup, FormControl, Validator, Validators } from '@angular/forms';
+import { FormBuilder,FormGroup, FormControl, Validator, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
@@ -26,12 +26,36 @@ export class OrderComponent implements OnInit {
             pin: new FormControl('',[Validators.required]),
           }
         )
+        ,
+          cards: this.fb.array([
+            this.buildForm()
+          ])
       }
     )
   }
 
+  buildForm(){
+    return this.fb.group(
+      {
+        cardNumber : new FormControl('',[Validators.required]),
+        expMonth : new FormControl('',[Validators.required]),
+        expYear : new FormControl('',[Validators.required]),
+        cvv : new FormControl('',[Validators.required])
+      })
+  }
+
   saveOrder(){
     console.log(this.orderForm.value);
+  }
+
+  addCard(){
+    const card = this.orderForm.controls['cards'] as FormArray
+    card.push(this.buildForm());
+  }
+
+  removeCard(i: number){
+    const card = this.orderForm.controls['cards'] as FormArray;
+    card.removeAt(i);
   }
 
 }

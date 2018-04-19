@@ -4,6 +4,7 @@
 {{orderForm.value | json}}
 <div class="container">
   <div class="jumbotron">
+    <!-- Full Form Name -->
     <form [formGroup]=orderForm (submit)="saveOrder()">
       <div class="form-group">
           <input type="number" class="form-control" formControlName="orderId" placeholder="Order Id">
@@ -21,6 +22,7 @@
       <div class="form-group">
         <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
       </div>
+      <!-- Form Group with address -->
       <div formGroupName="address">
         <div class="form-group">
           <input class="form-control" type="text" formControlName="address1" placeholder="Address 1">
@@ -34,6 +36,33 @@
         <div class="form-group">
           <input class="form-control" type="text" formControlName="pin" placeholder="Pin">
         </div>
+      </div>
+      <!-- Multiple cards add functionality -->
+      <div class="form-group">
+          <button class="form-group" type="button" class="btn btn-primary" (click)="addCard()">
+            Add Cards
+          </button>
+        </div>
+      <div formArrayName="cards" class="form-group">
+          <div *ngFor="let card of orderForm['controls'].cards['controls'];let i = index">
+            <div [formGroupName]="i" class="form-group">
+              <div class="form-group">
+                  <input class="form-control" type="text" formControlName="cardNumber" placeholder="cardNumber">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" type="text" formControlName="expMonth" placeholder="expMonth">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" type="text" formControlName="expYear" placeholder="expYear">
+              </div>
+              <div class="form-group">
+                  <input class="form-control" type="text" formControlName="cvv" placeholder="cvv">
+              </div>
+            </div>
+                  <div class="form-group">
+                  <button type="button" class="btn btn-danger" (click)="removeCard(i)">Remove Card</button>
+                 </div>
+          </div>
       </div>
       <div>
         <button type="submit"  [disabled]="orderForm.invalid" class="btn btn-primary">Save Order</button>
