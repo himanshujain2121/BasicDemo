@@ -3,14 +3,29 @@
 </p>
 {{post | json}}
 {{postForm.valid | json }}
+{{postForm.invalid | json }}
+{{postForm.pristine | json }}
+{{postForm.dirty | json }}
 <div class="container">
   <div class="jumbotron">
     <form #postForm="ngForm" novalidate  (submit)="addPost();postForm.reset()">
       <div class="form-group">
-        <input required type="number" class="form-control" [(ngModel)]="post.userId" name="userId" placeholder="UserId">
+        <input required type="number" #userid="ngModel" class="form-control" [(ngModel)]="post.userId" name="userId" placeholder="UserId">
+         <div class="alert alert-danger" *ngIf="userid.invalid && userid.dirty">
+               Please provide userID
+              {{userid.valid | json }} 
+              {{userid.invalid | json }}
+              {{userid.pristine | json }} 
+              {{userid.dirty | json}}
+              {{userid.value | json }}\
+              {{userid.errors | json }}
+         </div>
       </div>
       <div class="form-group">
-        <input required type="text" class="form-control" [(ngModel)]="post.title" name="title" placeholder="Title">
+        <input required minlength="4" maxlength = "10" #title="ngModel" type="text" class="form-control" [(ngModel)]="post.title" name="title" placeholder="Title">
+             <div class="alert alert-danger" *ngIf="title.invalid && title.dirty">
+                   Please Enter minimum 4 character.
+             </div>
       </div> 
       <div class="form-group"> 
         <input required type="text" class="form-control" [(ngModel)]="post.body" name="body" placeholder="Body">
