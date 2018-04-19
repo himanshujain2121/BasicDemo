@@ -11,7 +11,8 @@ import { Posts } from '../service/posts/posts';
 export class PostsComponent implements OnInit {
 
   postList:Posts[];
-  constructor(private postservice:PostsService) { }
+  post:Posts = new Posts();
+  constructor(private postservice :PostsService) { }
 
   ngOnInit() {
     this.postservice.getposts().subscribe(
@@ -24,7 +25,8 @@ export class PostsComponent implements OnInit {
   }
 
   addPost(){
-     this.postservice.addPost().subscribe(
+    console.log();
+     this.postservice.addPost(this.post).subscribe(
        (res)=>{console.log(res)},
        (err)=>console.log(err),
      )

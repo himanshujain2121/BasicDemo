@@ -11,8 +11,8 @@ export class PostsService {
     return this.httpclient.get<Posts[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
-  addPost() {
-    let post = { userId: 1, title: 'qwertyuiop', body: 'asdfghjkl' };
+  addPost(post:Posts) {
+   // let post = { userId: 1, title: 'qwertyuiop', body: 'asdfghjkl' };
     return this.httpclient.post('https://jsonplaceholder.typicode.com/posts', post);
   }
 

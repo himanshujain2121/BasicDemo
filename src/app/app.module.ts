@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 // component
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -30,7 +31,8 @@ import { NewemployeeService } from './service/employee/newemployee.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
    // {provide:EmployeeService,useClass:EmployeeService},
