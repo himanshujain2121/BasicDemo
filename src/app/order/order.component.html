@@ -1,0 +1,36 @@
+<p>
+  order works!
+</p>
+{{orderForm.value | json}}
+<div class="container">
+  <div class="jumbotron">
+    <form [formGroup]=orderForm>
+      <div class="form-group">
+          <input type="number" class="form-control" formControlName="orderId" placeholder="Order Id">
+      </div>
+      <div class="form-group">
+         <input type="text" class="form-control" formControlName="customerName" placeholder="customer Name">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile">
+      </div>
+      <div formGroupName="address">
+        <div class="form-group">
+          <input class="form-control" type="text" formControlName="address1" placeholder="Address 1">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" formControlName="address2" placeholder="Address 2">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" formControlName="city" placeholder="City">
+        </div>
+        <div class="form-group">
+          <input class="form-control" type="text" formControlName="pin" placeholder="Pin">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
