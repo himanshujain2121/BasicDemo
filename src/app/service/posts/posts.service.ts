@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Posts } from './posts';
 
 @Injectable()
@@ -22,7 +22,11 @@ export class PostsService {
   }
 
   deletePost(){
-   
     return this.httpclient.delete('https://jsonplaceholder.typicode.com/posts/1');
+  }
+
+  getPhotos(){
+    const request = new HttpRequest('GET','https://jsonplaceholder.typicode.com/photos',{reportProgress:true});
+    return this.httpclient.request(request);
   }
 } 
