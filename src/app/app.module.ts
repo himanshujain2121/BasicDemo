@@ -17,6 +17,9 @@ import { EmployeeService } from './service/employee/employee.service';
 import { BooksService } from './service/books/books.service';
 import { NewemployeeService } from './service/employee/newemployee.service';
 import { PostInterceptorService } from './service/posts/post-interceptor.service';
+import { VALUE_PROVIDER } from './service/valueProvider/valueProvider';
+import { environment } from '../environments/environment';
+
 
 
 
@@ -42,7 +45,8 @@ import { PostInterceptorService } from './service/posts/post-interceptor.service
   providers: [
    // {provide:EmployeeService,useClass:EmployeeService},
     {provide:EmployeeService,useClass:EmployeeService},
-    {provide:HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi:true}
+    {provide:HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi:true},
+    {provide: VALUE_PROVIDER, useValue:environment},
     ,BooksService],
   bootstrap: [AppComponent]
 })

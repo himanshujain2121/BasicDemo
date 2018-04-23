@@ -1,32 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable ,Inject} from '@angular/core';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Posts } from './posts';
+import { VALUE_PROVIDER } from '../valueProvider/valueProvider';
 
 @Injectable()
 export class PostsService {
 
-  constructor(private httpclient: HttpClient) { }
+   apiBaseUrl:string;
+  constructor(private httpclient: HttpClient, @Inject(VALUE_PROVIDER) private valueProvider:any) {
+    this.apiBaseUrl = this.valueProvider.apiUrl;
+    console.log('output = '+this.apiBaseUrl);
+   }
 
   getposts() {
-    return this.httpclient.get<Posts[]>('https://jsonplaceholder.typicode.com/posts');
+    return this.httpclient.get<Posts[]>(this.apiBaseUrl+'posts');
   }
 
   addPost(post:Posts) {
    // let post = { userId: 1, title: 'qwertyuiop', body: 'asdfghjkl' };
-    return this.httpclient.post('https://jsonplaceholder.typicode.com/posts', post);
+    return this.httpclient.post(this.apiBaseUrl+'posts', post);
   }
 
   updatePost() {
     let post = { userId: 1, id: 2, title: 'qwertyuiop', body: 'asdfghjkl' };
-    return this.httpclient.put('https://jsonplaceholder.typicode.com/posts/1',post);
+    return this.httpclient.put(this.apiBaseUrl+'posts/1',post);
   }
 
   deletePost(){
-    return this.httpclient.delete('https://jsonplaceholder.typicode.com/posts/1');
+    return this.httpclient.delete(this.apiBaseUrl+'posts/1');
   }
 
   getPhotos(){
-    const request = new HttpRequest('GET','https://jsonplaceholder.typicode.com/photos',{reportProgress:true});
+    const request = new HttpRequest('GET',this.apiBaseUrl+'photos'
+    ,{reportProgress:true});
     return this.httpclient.request(request);
   }
 } 
