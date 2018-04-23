@@ -1,7 +1,7 @@
 // Common Module
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // component
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { OrderComponent } from './order/order.component';
 import { EmployeeService } from './service/employee/employee.service';
 import { BooksService } from './service/books/books.service';
 import { NewemployeeService } from './service/employee/newemployee.service';
+import { PostInterceptorService } from './service/posts/post-interceptor.service';
 
 
 
@@ -40,7 +41,8 @@ import { NewemployeeService } from './service/employee/newemployee.service';
   ],
   providers: [
    // {provide:EmployeeService,useClass:EmployeeService},
-    {provide:EmployeeService,useClass:EmployeeService}
+    {provide:EmployeeService,useClass:EmployeeService},
+    {provide:HTTP_INTERCEPTORS, useClass: PostInterceptorService, multi:true}
     ,BooksService],
   bootstrap: [AppComponent]
 })
